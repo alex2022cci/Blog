@@ -1,5 +1,6 @@
 <?php
 
+namespace pages\templates;
 
 
 ?>
@@ -11,9 +12,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Hocus Bloggus</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
 </head>
 <body>
 <div class="col-lg-8 mx-auto p-4 py-md-5">
@@ -24,7 +25,7 @@
     <p class="fs-5 col-md-8">Quickly and easily get started with Bootstrap's compiled, production-ready files with this barebones example featuring some basic HTML and helpful links. Download all our examples to get started.</p>
 
     <div class="mb-5">
-      <a href="../examples/" class="btn btn-primary btn-lg px-4">Download examples</a>
+      <a href="#" class="btn btn-primary btn-lg px-4">Download examples</a>
     </div>
 
     <hr class="col-3 col-md-2 mb-5">

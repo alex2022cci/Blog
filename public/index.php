@@ -1,7 +1,10 @@
 <?php
 
 
+
  require '../app/Autoloader.php';
+ require '../app/Database.php';
+
 
 app\Autoloader::register();
 
@@ -11,16 +14,22 @@ app\Autoloader::register();
     }
     else 
     {
+        //par défaut, la homepage
         $p = 'home';
     }
+    // initialisation des objets
+    $db = new App\Database('blog_mvc');
 
+  
+
+    //ob-start permet de stocker des variables en PHP
     ob_start();
 
     if ($p === 'home')
      {
         require '../pages/home.php';
     }
-     elseif ($p = 'single')
+     elseif ($p === 'single')
     {
         require '../pages/single.php';
     }
