@@ -13,7 +13,6 @@ namespace pages\templates;
 <head>
     <meta charset="UTF-8">
     <title>Hocus Bloggus</title>
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
 </head>
 <body>

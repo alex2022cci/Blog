@@ -12,7 +12,6 @@ class Database
     private $db_host;
     private $pdo;
 
-
     public function __construct($db_name, $db_user = 'root', $db_pass = '', $db_host = 'localhost')
     {
         $this->db_name = $db_name;
@@ -28,9 +27,7 @@ class Database
             $pdo = new PDO('mysql:dbname=blog_mvc;host=localhost', 'root', '');
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             $this->pdo = $pdo;
-            var_dump('getPDO start');
         }
-        var_dump('getPDO called');
         return $this->pdo;
     }
 
@@ -39,7 +36,25 @@ class Database
         $req =   $this->getPDO()->query($statement);
 
         $datas = $req->fetchAll(PDO::FETCH_CLASS, $class_name );
-        print_r($datas);
+        return $datas;
+    }
+
+    public function prepare($statement, $attributes, $class_name, $one = false)
+    {
+        $req = $this->getPDO()->prepare($statement);
+        $req->execute($attributes);
+        $req->setFetchMode(PDO::FETCH_CLASS, $class_name);
+        if($one)
+        {
+            $datas =   $req->fetch();
+
+        }
+        else
+        {
+            $datas =   $req->fetchAll();
+
+        }
+
         return $datas;
     }
 }
