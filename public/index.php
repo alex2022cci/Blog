@@ -17,8 +17,6 @@ app\Autoloader::register();
         //par défaut, la homepage
         $p = 'home';
     }
-    // initialisation des objets
-    $db = new App\Database('blog_mvc');
 
   
 
@@ -32,6 +30,10 @@ app\Autoloader::register();
      elseif ($p === 'article')
     {
         require '../pages/single.php';
+    }
+    elseif ($p === 'cateogorie')
+    {
+        require '../pages/categorie.php';
     }
 
     $content = ob_get_clean();
