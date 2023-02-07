@@ -17,9 +17,6 @@ app\Autoloader::register();
         //par défaut, la homepage
         $p = 'home';
     }
-
-  
-
     //ob-start permet de stocker des variables en PHP
     ob_start();
 

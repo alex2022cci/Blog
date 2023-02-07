@@ -2,17 +2,30 @@
 
 namespace App\Table;
 
-use App\App;
-use App\Table\Table;
 
 
 class Article extends Table
 {
+    protected static $table = 'articles';
+
+
+    public static function find($id)
+    {
+        return static::query("
+        SELECT articles.id, articles.titre, articles.contenu, categories.titre as categorie
+        FROM articles
+        LEFT JOIN categories ON category_id = categories.id
+        WHERE articles.id = ?
+         ", [$id], true);
+    }
+
+
     public static function getLast()
     {
-        return App::getDB()->query("SELECT articles.id, articles.titre, articles.contenu, categories.titre as categorie  FROM articles
-        LEFT JOIN categories
-         ON category_id = categories.id", __CLASS__);
+        return self::query("
+        SELECT articles.id, articles.titre, articles.contenu, categories.titre as categorie  FROM articles
+        LEFT JOIN categories ON category_id = categories.id
+         ");
     }
 
     public function __get($key)
@@ -24,13 +37,13 @@ class Article extends Table
 
     public static function lastByCategory($category_id)
     {
-        return App::getDB()->prepare("SELECT articles.id, articles.titre, articles.contenu, categories.titre as categorie  FROM articles
+        return self::query('
+        SELECT articles.id, articles.titre, articles.contenu, categories.titre as categorie
+          FROM articles
         LEFT JOIN categories
          ON category_id = categories.id
          WHERE category_id = ?
-         
-         
-         ", [$category_id] ,__CLASS__);
+         ', [$category_id] ,__CLASS__);
     }
 
 

@@ -21,11 +21,11 @@ class Table
 
     public static function find($id)
     {
-        return App::getDB()->prepare("
+        return static::query("
         SELECT *
-        FROM ".static::getTable()."
+        FROM ".static::$table."
         WHERE id = ?
-         ", [$id], get_called_class(), true);
+         ", [$id], true);
     }
 
     public static function query($statement, $attributes = null, $one = false)
@@ -48,7 +48,7 @@ class Table
     {
         return App::getDB()->query("
         SELECT *
-        FROM ".static::getTable()."
+        FROM ".static::$table."
          ", get_called_class());
     }
 
